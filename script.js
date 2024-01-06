@@ -58,13 +58,15 @@ purchaseBtnEl.addEventListener("click", () => {
       case "open":
         change.forEach((x, i) => {
           if (x[1] > 0) {
-            changeString += `${x[0]}: $${x[1] * lookup[i]}\n`;
+            changeString += `<p>${x[0]}: $${x[1] * lookup[i]}</p>`;
           }
         });
         break;
       case "closed":
         for (let i = 3; i >= 0; i--) {
-          changeString += `${change[i][0]}: $${change[i][1] * lookup[i]}\n`;
+          changeString += `<p>${change[i][0]}: $${
+            change[i][1] * lookup[i]
+          }</p>`;
         }
         break;
     }
@@ -75,12 +77,12 @@ purchaseBtnEl.addEventListener("click", () => {
   if (cash < price) {
     alert("Customer does not have enough money to purchase the item");
   } else if (cash == price) {
-    changeDueEl.innerText = `No change due - customer paid with exact cash`;
+    changeDueEl.innerHTML = `<p>No change due - customer paid with exact cash</p>`;
   } else if (changeDue > 0) {
-    changeDueEl.innerText = `Status: INSUFFICIENT_FUNDS`;
+    changeDueEl.innerHTML = `<p>Status: INSUFFICIENT_FUNDS</p>`;
   } else if (isDrawerEmpty()) {
-    changeDueEl.innerText = `Status: CLOSED \n${printChange("closed")}`;
+    changeDueEl.innerHTML = `<p>Status: CLOSED</p>${printChange("closed")}`;
   } else {
-    changeDueEl.innerText = `Status: OPEN \n${printChange("open")}`;
+    changeDueEl.innerHTML = `<p>Status: OPEN</p>${printChange("open")}`;
   }
 });
