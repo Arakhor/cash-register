@@ -15,7 +15,7 @@ let cid = [
   ["ONE HUNDRED", 0],
 ];
 
-function substractFloat(a, b) {
+function subtractFloat(a, b) {
   return (a * 1000 - b * 1000) / 1000;
 }
 
@@ -37,8 +37,8 @@ purchaseBtnEl.addEventListener("click", () => {
   for (let i = cid.length - 1; i >= 0; i--) {
     while (changeDue >= lookup[i] && cid[i][1] >= lookup[i]) {
       change[i][1]++;
-      cid[i][1] = substractFloat(cid[i][1], lookup[i]);
-      changeDue = substractFloat(changeDue, lookup[i]);
+      cid[i][1] = subtractFloat(cid[i][1], lookup[i]);
+      changeDue = subtractFloat(changeDue, lookup[i]);
     }
   }
 
